@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">KSTU</string>
+    <string name="polygraphy_string">Полиграфия</string>
+    <string name="polygraphy_name">#Кафедра: имени\nКурманалиева Карыпбека\n Курманалиевича</string>
+    <string name="login_text">Ведите логин</string>
+    <string name="password_text">Ведите пароль</string>
+    <string name="sig_in">войти</string>
+    <string name="lecture_schedule">Lecture Schedule</string>
+    <string name="group">Group</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+</resources>
