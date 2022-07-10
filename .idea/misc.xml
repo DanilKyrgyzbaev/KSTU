@@ -3,15 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bacground_calendar.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/button_bacground.xml" value="0.177" />
+        <entry key="app/src/main/res/drawable/ic_chevron_forward.xml" value="0.177" />
+        <entry key="app/src/main/res/drawable/ic_chevron_left.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/ic_groupuniver.xml" value="0.177" />
+        <entry key="app/src/main/res/drawable/ic_next.xml" value="0.177" />
+        <entry key="app/src/main/res/drawable/ic_previous.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.177" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.296875" />
+        <entry key="app/src/main/res/layout/activity_auth_landing.xml" value="0.2547008547008547" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2547008547008547" />
         <entry key="app/src/main/res/layout/auth_landing_fragment.xml" value="0.24273504273504273" />
         <entry key="app/src/main/res/layout/custom_calendar_day.xml" value="0.24273504273504273" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.24273504273504273" />
+        <entry key="app/src/main/res/layout/item_group.xml" value="0.24273504273504273" />
+        <entry key="app/src/main/res/layout/item_journal.xml" value="0.2547008547008547" />
+        <entry key="app/src/main/res/layout/item_lecture.xml" value="0.23966244725738398" />
+        <entry key="app/src/main/res/layout/item_notification.xml" value="0.2547008547008547" />
+        <entry key="app/src/main/res/layout/journal_fragment.xml" value="0.24273504273504273" />
         <entry key="app/src/main/res/layout/lecture.xml" value="0.24273504273504273" />
-        <entry key="app/src/main/res/layout/lecture_schedule_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/lecture_schedule_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/notification_fragment.xml" value="0.24273504273504273" />
+        <entry key="app/src/main/res/layout/picker_item_layout.xml" value="0.2547008547008547" />
+        <entry key="app/src/main/res/layout/row_calendar_date.xml" value="0.1" />
         <entry key="app/src/main/res/layout/splash_fragment.xml" value="0.19117647058823528" />
+        <entry key="app/src/main/res/layout/user_profile_fragment.xml" value="0.24273504273504273" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.24273504273504273" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1555" />
       </map>

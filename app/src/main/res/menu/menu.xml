@@ -4,20 +4,24 @@
     <item
         android:id="@+id/lecture_schedule"
         android:icon="@drawable/ic_calendar"
-        tools:ignore="MenuTitle" />
+        android:enabled="true"
+        tools:ignore="MenuTitle"/>
 
     <item
         android:id="@+id/group_univer"
+        android:enabled="true"
         android:icon="@drawable/ic_two_user"
-        tools:ignore="MenuTitle" />
+        tools:ignore="MenuTitle"/>
 
     <item
         android:id="@+id/notifications"
         android:icon="@drawable/ic_feather_bell"
-        tools:ignore="MenuTitle" />
+        android:enabled="true"
+        tools:ignore="MenuTitle"/>
 
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_user"
-        tools:ignore="MenuTitle" />
+        android:enabled="true"
+        tools:ignore="MenuTitle"/>
 </menu>

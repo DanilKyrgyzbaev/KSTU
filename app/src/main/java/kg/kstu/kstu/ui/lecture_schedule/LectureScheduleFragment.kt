@@ -1,35 +1,29 @@
 package kg.kstu.kstu.ui.lecture_schedule
 
-import android.icu.text.SimpleDateFormat
-import android.os.Build
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.SnapHelper
+import kg.kstu.kstu.R
 import kg.kstu.kstu.core.BaseFragment
 import kg.kstu.kstu.databinding.LectureScheduleFragmentBinding
+import kg.kstu.kstu.model.CalendarDateModel
+import kg.kstu.kstu.ui.lecture_schedule.adapter.CalendarAdapter
+import kg.kstu.kstu.utils.HorizontalItemDecoration
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 class LectureScheduleFragment : BaseFragment<LectureScheduleFragmentBinding>() {
-    private val lastDayInCalendar = Calendar.getInstance(Locale.ENGLISH)
-    private val sdf = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        SimpleDateFormat("MMMM yyyy", Locale.ENGLISH)
-    } else {
-        TODO("VERSION.SDK_INT < N")
-    }
+    private val sdf = SimpleDateFormat("MMMM yyyy", Locale.ENGLISH)
     private val cal = Calendar.getInstance(Locale.ENGLISH)
-
     private val currentDate = Calendar.getInstance(Locale.ENGLISH)
-    private val currentDay = currentDate[Calendar.DAY_OF_MONTH]
-    private val currentMonth = currentDate[Calendar.MONTH]
-    private val currentYear = currentDate[Calendar.YEAR]
-
-    private var selectedDay: Int = currentDay
-    private var selectedMonth: Int = currentMonth
-    private var selectedYear: Int = currentYear
-
     private val dates = ArrayList<Date>()
+    private lateinit var adapter: CalendarAdapter
+    private val calendarList2 = ArrayList<CalendarDateModel>()
     companion object {
+        val TAG: String = LectureScheduleFragment::class.java.simpleName
+
         fun newInstance() = LectureScheduleFragment()
     }
 
@@ -39,39 +33,56 @@ class LectureScheduleFragment : BaseFragment<LectureScheduleFragmentBinding>() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(LectureScheduleViewModel::class.java)
         // TODO: Use the ViewModel
+        setUpAdapter()
+        setUpClickListener()
+        setUpCalendar()
     }
 
     override fun getViewBinding() = LectureScheduleFragmentBinding.inflate(layoutInflater)
-
     override fun onCreateView(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.calendarRecyclerView)
-
-        lastDayInCalendar.add(Calendar.MONTH, 6)
     }
-    private fun setUpCalendar(changeMonth: Calendar? = null) {
-        // first part
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            binding.txtCurrentMonth!!.text = sdf.format(cal.time)
+    private fun setUpClickListener() {
+        binding.ivCalendarNext.setOnClickListener {
+            cal.add(Calendar.MONTH, 1)
+            setUpCalendar()
         }
+        binding.ivCalendarPrevious.setOnClickListener {
+            cal.add(Calendar.MONTH, -1)
+            if (cal == currentDate)
+                setUpCalendar()
+            else
+                setUpCalendar()
+        }
+    }
+
+    private fun setUpAdapter() {
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.single_calendar_margin)
+        binding.recyclerView.addItemDecoration(HorizontalItemDecoration(spacingInPixels))
+        val snapHelper: SnapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(binding.recyclerView)
+        adapter = CalendarAdapter { calendarDateModel: CalendarDateModel, position: Int ->
+            calendarList2.forEachIndexed { index, calendarModel ->
+                calendarModel.isSelected = index == position
+            }
+            adapter.setData(calendarList2)
+        }
+        binding.recyclerView.adapter = adapter
+    }
+    private fun setUpCalendar() {
+        val calendarList = ArrayList<CalendarDateModel>()
+        binding.tvDateMonth.text = sdf.format(cal.time)
         val monthCalendar = cal.clone() as Calendar
         val maxDaysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
-
-        selectedDay =
-            when {
-                changeMonth != null -> changeMonth.getActualMinimum(Calendar.DAY_OF_MONTH)
-                else -> currentDay
-            }
-        selectedMonth =
-            when {
-                changeMonth != null -> changeMonth[Calendar.MONTH]
-                else -> currentMonth
-            }
-        selectedYear =
-            when {
-                changeMonth != null -> changeMonth[Calendar.YEAR]
-                else -> currentYear
-            }
+        dates.clear()
+        monthCalendar.set(Calendar.DAY_OF_MONTH, 1)
+        while (dates.size < maxDaysInMonth) {
+            dates.add(monthCalendar.time)
+            calendarList.add(CalendarDateModel(monthCalendar.time))
+            monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+        calendarList2.clear()
+        calendarList2.addAll(calendarList)
+        adapter.setData(calendarList)
     }
 }

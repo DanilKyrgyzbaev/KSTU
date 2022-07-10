@@ -9,4 +9,16 @@
     <string name="group">Group</string>
     <string name="notifications">Notifications</string>
     <string name="profile">Profile</string>
+    <string name="lecture_string">Лекция :</string>
+    <string name="lecture_name_string">Полиграфия</string>
+    <string name="group_text">Группа :</string>
+    <string name="group_name_string">ИСиТ - 1-18 (б)</string>
+    <string name="time_data">с 9:30 до 10:55</string>
+    <string name="cafedra_data">105/3</string>
+    <string name="cafedra">КАФЕДРА:</string>
+    <string name="time">ВРЕМЯ:</string>
+    <string name="faculty_name">Факультет транспорта и \nмашиностроения\n Группа ИСиТ(б)-1-18</string>
+    <string name="student_study_card_string">Учебная карточка студента\n Кыргызбаев Даниль Суюналиевич</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

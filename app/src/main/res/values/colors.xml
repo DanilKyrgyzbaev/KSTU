@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="string_color">#064295</color>
+    <color name="calendar_color">#99064295</color>
 </resources>

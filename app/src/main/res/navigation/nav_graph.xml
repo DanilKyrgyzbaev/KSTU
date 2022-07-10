@@ -9,29 +9,17 @@
         android:id="@+id/lectureScheduleFragment"
         android:name="kg.kstu.kstu.ui.lecture_schedule.LectureScheduleFragment"
         android:label="lecture_schedule_fragment"
-        tools:layout="@layout/lecture_schedule_fragment" >
-        <action
-            android:id="@+id/action_lectureScheduleFragment_to_journalFragment"
-            app:destination="@id/journalFragment" />
-    </fragment>
+        tools:layout="@layout/lecture_schedule_fragment" />
     <fragment
         android:id="@+id/journalFragment"
         android:name="kg.kstu.kstu.ui.journal.JournalFragment"
         android:label="journal_fragment"
-        tools:layout="@layout/journal_fragment" >
-        <action
-            android:id="@+id/action_journalFragment_to_notificationFragment"
-            app:destination="@id/notificationFragment" />
-    </fragment>
+        tools:layout="@layout/journal_fragment" />
     <fragment
         android:id="@+id/notificationFragment"
         android:name="kg.kstu.kstu.ui.notification.NotificationFragment"
         android:label="notification_fragment"
-        tools:layout="@layout/notification_fragment" >
-        <action
-            android:id="@+id/action_notificationFragment_to_userProfileFragment"
-            app:destination="@id/userProfileFragment" />
-    </fragment>
+        tools:layout="@layout/notification_fragment" />
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="kg.kstu.kstu.ui.user_profile_students.UserProfileFragment"
