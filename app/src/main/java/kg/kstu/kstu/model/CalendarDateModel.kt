@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-data class CalendarDateModel(var data: Date, var isSelected: Boolean = false, val items: ArrayList<LectureModel>) {
+data class CalendarDateModel(var data: Date, var isSelected: Boolean = false, var items: ArrayList<LectureModel>? = null) {
 
     val calendarDay: String
         get() = SimpleDateFormat("EE", Locale.getDefault()).format(data)

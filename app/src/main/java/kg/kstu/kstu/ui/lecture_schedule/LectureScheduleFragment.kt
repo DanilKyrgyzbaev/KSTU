@@ -69,7 +69,11 @@ class LectureScheduleFragment : BaseFragment<LectureScheduleFragmentBinding>() {
                 calendarModel.isSelected = index == position
             }
             adapter.setData(calendarList2)
-            adapter2 = LectureAdapter(calendarDateModel.items)
+            try {
+                adapter2 = calendarDateModel.items?.let { LectureAdapter(it) }!!
+            }catch (e: NullPointerException){
+                adapter2 = LectureAdapter(null)
+            }
             binding.itemsRecycler.adapter = adapter2
         }
         binding.recyclerView.adapter = adapter
@@ -83,15 +87,14 @@ class LectureScheduleFragment : BaseFragment<LectureScheduleFragmentBinding>() {
         monthCalendar.set(Calendar.DAY_OF_MONTH, 1)
         while (dates.size < maxDaysInMonth) {
             dates.add(monthCalendar.time)
-            calendarList.add(CalendarDateModel(monthCalendar.time, items = arrayListOf(LectureModel(
-                "name",
-                "groupData",
-                "calendarData",
-                "dataTime",
-                12
-            ))))
+            calendarList.add(CalendarDateModel(monthCalendar.time))
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
         }
+        calendarList[0].items = arrayListOf(LectureModel("60","", "","",12))
+        calendarList[1].items = arrayListOf(LectureModel("1","2", "","",12))
+        calendarList[2].items = arrayListOf(LectureModel("","", "","",12))
+        calendarList[3].items = arrayListOf(LectureModel("фыв","фыв", "","",12))
+
         calendarList2.clear()
         calendarList2.addAll(calendarList)
         adapter.setData(calendarList)

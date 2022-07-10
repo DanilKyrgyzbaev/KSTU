@@ -6,19 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import kg.kstu.kstu.databinding.ItemGroupBinding
 import kg.kstu.kstu.model.LectureModel
 
-class LectureAdapter(private val lectureModelList: List<LectureModel>) : RecyclerView.Adapter<LectureAdapter.ViewHolder>() {
+class LectureAdapter(private val lectureModelList: List<LectureModel>?) : RecyclerView.Adapter<LectureAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemGroupBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val lectureModelList = lectureModelList[position]
-        holder.bindItem(lectureModelList)
+        val lectureModelList = lectureModelList?.get(position)
+        lectureModelList?.let { holder.bindItem(it) }
     }
 
     override fun getItemCount(): Int {
-        return lectureModelList.size
+        return lectureModelList?.size ?: 0
     }
     inner class ViewHolder(val itemBinding: ItemGroupBinding) : RecyclerView.ViewHolder(itemBinding.root){
         fun bindItem(lectureModel: LectureModel) {
