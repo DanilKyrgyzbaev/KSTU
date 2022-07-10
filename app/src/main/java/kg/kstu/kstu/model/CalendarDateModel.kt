@@ -2,8 +2,9 @@ package kg.kstu.kstu.model
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
-data class CalendarDateModel(var data: Date, var isSelected: Boolean = false) {
+data class CalendarDateModel(var data: Date, var isSelected: Boolean = false, val items: ArrayList<LectureModel>) {
 
     val calendarDay: String
         get() = SimpleDateFormat("EE", Locale.getDefault()).format(data)
@@ -14,4 +15,7 @@ data class CalendarDateModel(var data: Date, var isSelected: Boolean = false) {
             cal.time = data
             return cal[Calendar.DAY_OF_MONTH].toString()
         }
+
+
 }
+

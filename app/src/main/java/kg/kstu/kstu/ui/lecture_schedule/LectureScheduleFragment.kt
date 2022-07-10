@@ -8,7 +8,9 @@ import kg.kstu.kstu.R
 import kg.kstu.kstu.core.BaseFragment
 import kg.kstu.kstu.databinding.LectureScheduleFragmentBinding
 import kg.kstu.kstu.model.CalendarDateModel
+import kg.kstu.kstu.model.LectureModel
 import kg.kstu.kstu.ui.lecture_schedule.adapter.CalendarAdapter
+import kg.kstu.kstu.ui.lecture_schedule.adapter.LectureAdapter
 import kg.kstu.kstu.utils.HorizontalItemDecoration
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,6 +22,7 @@ class LectureScheduleFragment : BaseFragment<LectureScheduleFragmentBinding>() {
     private val currentDate = Calendar.getInstance(Locale.ENGLISH)
     private val dates = ArrayList<Date>()
     private lateinit var adapter: CalendarAdapter
+    private lateinit var adapter2: LectureAdapter
     private val calendarList2 = ArrayList<CalendarDateModel>()
     companion object {
         val TAG: String = LectureScheduleFragment::class.java.simpleName
@@ -66,6 +69,8 @@ class LectureScheduleFragment : BaseFragment<LectureScheduleFragmentBinding>() {
                 calendarModel.isSelected = index == position
             }
             adapter.setData(calendarList2)
+            adapter2 = LectureAdapter(calendarDateModel.items)
+            binding.itemsRecycler.adapter = adapter2
         }
         binding.recyclerView.adapter = adapter
     }
@@ -78,7 +83,13 @@ class LectureScheduleFragment : BaseFragment<LectureScheduleFragmentBinding>() {
         monthCalendar.set(Calendar.DAY_OF_MONTH, 1)
         while (dates.size < maxDaysInMonth) {
             dates.add(monthCalendar.time)
-            calendarList.add(CalendarDateModel(monthCalendar.time))
+            calendarList.add(CalendarDateModel(monthCalendar.time, items = arrayListOf(LectureModel(
+                "name",
+                "groupData",
+                "calendarData",
+                "dataTime",
+                12
+            ))))
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
         }
         calendarList2.clear()
